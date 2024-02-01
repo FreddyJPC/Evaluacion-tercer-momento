@@ -12,9 +12,14 @@ export class CostumesController {
     return this.costumesService.create(createCostumeDto);
   }
 
-  @Get()
-  findAll() {
-    return this.costumesService.findAll();
+  @Get('stock')
+  findStockCostumes() {
+    return this.costumesService.findStockCostumes();
+  }
+
+  @Get('supplying') // Cambio aquí
+  addCostumesToInventory() {
+    return this.costumesService.addCostumesToInventory([]); // Pass an empty array as an argument
   }
 
   @Get(':id')

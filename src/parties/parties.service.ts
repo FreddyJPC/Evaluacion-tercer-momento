@@ -6,6 +6,17 @@ import { PrismaService } from "../prisma/prisma.service";
 @Injectable()
 export class PartiesService {
   constructor(private prisma: PrismaService) {}
+
+  async getPartiesByDate(date: string) {
+    // Aquí deberías utilizar el servicio Prisma para buscar las fiestas por fecha
+    const parties = await this.prisma.party.findMany({
+      where: {
+        date: date,
+      },
+    });
+    return parties;
+  }
+
   create(createPartyDto: CreatePartyDto) {
     return 'This action adds a new party';
   }
